@@ -13,6 +13,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 
+
+//This screen displays all the trips stored in the database.
+//and also the UI automatically updates whenever a new trip is added, removed, or edited.
 @Composable
 fun TripListScreen(
     viewModel: TripViewModel,
@@ -38,7 +41,7 @@ fun TripListScreen(
                 .padding(paddingValues)
                 .padding(16.dp)
         ) {
-
+            // My Main title for my screen.
             Text(
                 "🌍 Travel Journal",
                 style = MaterialTheme.typography.headlineMedium,
@@ -52,6 +55,8 @@ fun TripListScreen(
                     modifier = Modifier.padding(top = 20.dp)
                 )
             } else {
+
+                // LazyColumn efficiently renders a scrollable list of trips.
                 LazyColumn {
                     items(trips) { trip ->
                         TripCard(trip)
@@ -63,7 +68,8 @@ fun TripListScreen(
     }
 }
 
-
+//A reusable UI component that displays the details of a single Trip.
+//The card layout keeps the information neatly grouped and easy to read.
 @Composable
 fun TripCard(trip: Trip) {
     Surface(
@@ -81,14 +87,17 @@ fun TripCard(trip: Trip) {
 
             Spacer(modifier = Modifier.height(6.dp))
 
+            //Description of the trip
             Text(trip.description, style = MaterialTheme.typography.bodyMedium)
 
             Spacer(modifier = Modifier.height(4.dp))
 
+            //Date of the Trip
             Text("📅 ${trip.date}", style = MaterialTheme.typography.bodySmall)
 
             Spacer(modifier = Modifier.height(4.dp))
 
+            //Trip notes
             if (trip.notes.isNotBlank()) {
                 Text("📝 ${trip.notes}", style = MaterialTheme.typography.bodySmall)
             }

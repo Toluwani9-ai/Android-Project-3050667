@@ -7,6 +7,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 
+// Allows the user to enter details about a new trip
 @Composable
 fun AddTripScreen(
     viewModel: TripViewModel,
@@ -18,6 +19,7 @@ fun AddTripScreen(
     var date by remember { mutableStateOf("") }
     var notes by remember { mutableStateOf("") }
 
+    // Main layout of the screen.
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -39,6 +41,7 @@ fun AddTripScreen(
 
         Spacer(modifier = Modifier.height(8.dp))
 
+        // A short explanation of the trip.
         OutlinedTextField(
             value = description,
             onValueChange = { description = it },
@@ -48,6 +51,7 @@ fun AddTripScreen(
 
         Spacer(modifier = Modifier.height(8.dp))
 
+        // Saves the date of the journey.
         OutlinedTextField(
             value = date,
             onValueChange = { date = it },
@@ -57,6 +61,7 @@ fun AddTripScreen(
 
         Spacer(modifier = Modifier.height(8.dp))
 
+        // The user additional information.
         OutlinedTextField(
             value = notes,
             onValueChange = { notes = it },
@@ -75,8 +80,9 @@ fun AddTripScreen(
                         date = date,
                         notes = notes
                     )
-
+                    // Send the entered trip to ViewModel so it be saved.
                     viewModel.addTrip(newTrip)
+                    // To navigate back to the previous screen.
                     navController.popBackStack()
                 }
             },
