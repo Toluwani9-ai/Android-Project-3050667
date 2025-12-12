@@ -28,8 +28,8 @@ fun TravelJournalApp(viewModel: TripViewModel) {
         }
 
         // Route for adding a new trip entry.
-        // When this screen completes its task, it navigates back
-        //to the trip list to shows all updated trip.
+        // When this screen completes its task, it navigates back to the trip list to shows all updated trip.
+
 
         composable("add_trip") {
             AddTripScreen(
